@@ -1,1 +1,1 @@
-# plaza-management-system
+# Plaza management system
