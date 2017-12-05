@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row valign-wrapper">
+    <div class="col s6 offset-s3 valign">
+      <mat-card class="login-card">
+        <br>
+        <form [formGroup]="loginFormGroup" (ngSubmit)="onSubmit()">
+          <img id="logo" mat-card-image src="assets/images/diamond_logo.png" alt="Diamond Logo">
+          <mat-card-content>
+
+            <mat-form-field>
+              <input type="email" matInput placeholder="Username" formControlName="username">
+              <mat-error *ngIf="loginFormGroup.get('username').hasError('pattern')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="loginFormGroup.get('username').hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input type="password" matInput placeholder="Password" formControlName="password">
+              <mat-error *ngIf="loginFormGroup.get('password').hasError('required')">
+                Password is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </mat-card-content>
+          <mat-card-actions>
+            <mat-list>
+              <mat-list-item>
+                <button mat-raised-button type="submit" color="primary">LOGIN</button>
+              </mat-list-item>
+            </mat-list>
+          </mat-card-actions>
+        </form>
+        <mat-card-actions>
+          <mat-list>
+            <mat-list-item>
+              <button class="btn-si btn-google mat-elevation-z4" (click)="onGoogleSignIn()">Google</button>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
