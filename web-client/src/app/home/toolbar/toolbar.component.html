@@ -1,9 +1,10 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <button mat-icon-button>
+    <button mat-icon-button (click)="toggleSidebarService.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <button mat-button>Purchases</button>
+    <button mat-button routerLink="/purchases" routerLinkActive="active">Purchases</button>
+    <button mat-button routerLink="/sales" routerLinkActive="active">Sales</button>
     <span class="spacer"></span>
     <button mat-icon-button matTooltip="SignOut" (click)="onSignOut()">
       <mat-icon>exit_to_app</mat-icon>

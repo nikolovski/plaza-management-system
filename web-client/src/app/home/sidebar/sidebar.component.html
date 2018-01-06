@@ -1,3 +1,9 @@
-<p>
-  sidebar works!
-</p>
+
+<mat-drawer-container class="drawer-container" autosize [ngClass]="{'opened':isOpen}">
+  <mat-drawer #drawer class="drawer" mode="side" [opened]="isOpen">
+    <p>Auto-resizing sidenav</p>
+  </mat-drawer>
+  <mat-drawer-content (click)="onContentClick($event)">
+  </mat-drawer-content>
+</mat-drawer-container>
+

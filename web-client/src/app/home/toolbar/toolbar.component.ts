@@ -2,6 +2,7 @@ import {Component, Injectable, OnInit} from '@angular/core';
 import {AuthService} from '../../core/auth/auth.service';
 import Logger from '../../core/logger';
 import {Router} from '@angular/router';
+import {ToggleSidebarService} from '../../core/toggle-sidebar/toggle-sidebar.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -11,8 +12,10 @@ import {Router} from '@angular/router';
 @Injectable()
 export class ToolbarComponent implements OnInit {
 
+
   constructor(private authService: AuthService,
-              private router: Router) { }
+              private router: Router,
+              public toggleSidebarService: ToggleSidebarService) { }
 
   ngOnInit() {
   }

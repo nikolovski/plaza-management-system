@@ -8,7 +8,7 @@
           <mat-card-content>
 
             <mat-form-field>
-              <input type="email" matInput placeholder="Username" formControlName="username">
+              <input type="email" autocomplete="true" matInput placeholder="Username" formControlName="username">
               <mat-error *ngIf="loginFormGroup.get('username').hasError('pattern')">
                 Please enter a valid email address
               </mat-error>
@@ -17,7 +17,7 @@
               </mat-error>
             </mat-form-field>
             <mat-form-field>
-              <input type="password" matInput placeholder="Password" formControlName="password">
+              <input type="password" autocomplete="true" matInput placeholder="Password" formControlName="password">
               <mat-error *ngIf="loginFormGroup.get('password').hasError('required')">
                 Password is <strong>required</strong>
               </mat-error>
@@ -31,6 +31,7 @@
             </mat-list>
           </mat-card-actions>
         </form>
+        <mat-divider></mat-divider>
         <mat-card-actions>
           <mat-list>
             <mat-list-item>

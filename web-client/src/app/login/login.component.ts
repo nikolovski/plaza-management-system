@@ -29,7 +29,8 @@ export class LoginComponent implements OnInit {
       const password = this.loginFormGroup.get('password').value;
       this.authService.signIn(email, password).subscribe(user => {
           Logger.info('User with email', user.email, 'is logged in');
-          this.router.navigate(['']);
+          Logger.log(user.getIdToken());
+          this.router.navigate(['/']);
         },
         error => this.snackBar.open(error, 'Close', {duration: 3000})
       );
@@ -37,9 +38,11 @@ export class LoginComponent implements OnInit {
   }
 
   onGoogleSignIn(): void {
-    this.authService.googleSignIn().subscribe(user => {
-      Logger.info('User with email',user.email,'is logged in using Google Authentication');
-      this.router.navigate(['']);
+    this.authService.googleSignIn().subscribe(credentials => {
+      Logger.info('User ',credentials.user.email,'is logged in using Google Authentication');
+      this.router.navigate(['/']).then(response => {
+        window.location.href = '/';
+      });
     });
   }
 

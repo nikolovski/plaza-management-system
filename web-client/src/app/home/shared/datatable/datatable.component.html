@@ -1,0 +1,33 @@
+<div>
+  <mat-form-field>
+    <mat-select placeholder="Search by" [(value)]="searchBy" (change)="onFieldSelect($event)">
+      <mat-option *ngFor="let displayedField of displayedFields; let i=index;" [value]="fields[i]">
+        {{displayedField}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <input type="search" matInput placeholder="Search input" [(ngModel)]="searchKeyword" (keyup)="onSearchInput()">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</div>
+
+<div class="table-content mat-elevation-z8">
+  <table class="table table-grey" matSort (matSortChange)="onSort($event)">
+    <thead table-header>
+    <tr>
+      <th *ngFor="let displayedField of displayedFields; let i=index;" [mat-sort-header]="fields[i]" draggable="true" (dragstart)="onDragStart($event)" (dragover)="onDragOver($event)" (drop)="onDrop($event)" >{{displayedField}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let document of data" (click)="onRowClick(document)">
+      <td scope="row" *ngFor="let field of fields">{{document[field]}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <mat-paginator [length]="totalLength"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="pageSizeOptions"
+                  (page)="onPageChange($event)">
+  </mat-paginator>
+</div>

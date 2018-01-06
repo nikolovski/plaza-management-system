@@ -1,0 +1,18 @@
+<div class="create-new-button">
+  <button mat-fab color="primary" (click)="onAddClick()">
+    <mat-icon aria-label="Add new">add</mat-icon>
+  </button>
+</div>
+
+<ng-template #dialog>
+  <h1 mat-dialog-title>{{dialogTitle}}</h1>
+  <div mat-dialog-content>
+    <form>
+
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button (click)="onSaveClick()">Save</button>
+  </div>
+</ng-template>

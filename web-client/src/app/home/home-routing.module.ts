@@ -2,10 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './home.component';
-import {AuthGuardService} from '../core/auth/auth-guard.service';
 
 const homeRoutes: Routes = [
-{path: '', component: HomeComponent}
+  {path: '', component: HomeComponent, children: [
+    {path: 'purchases', loadChildren:'./purchases/purchases.module#PurchasesModule'},
+    {path: 'sales', loadChildren:'./sales/sales.module#SalesModule'},
+  ]}
+
 ];
 
 @NgModule({

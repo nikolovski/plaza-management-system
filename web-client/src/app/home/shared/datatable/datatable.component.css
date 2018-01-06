@@ -1,0 +1,33 @@
+.table-grey {
+  color: #fff;
+  background-color: #424242;
+}
+
+thead > tr > th{
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+tbody > tr > td, th{
+  font-size: 12px;
+  font-weight: 500;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+:host >>> mat-paginator>div.mat-paginator-container{
+  justify-content: center;
+}
+.table-content {
+  background-color: #424242;
+}
+
+:host >>> mat-icon.mat-icon{
+  color: white;
+  font-size:125%;
+}
+:host >>> input.mat-input-element.mat-form-field-autofill-control{
+  color: white;
+}
+.search-section {
+  z-index: 0;
+}
