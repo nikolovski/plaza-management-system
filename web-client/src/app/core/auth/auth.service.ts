@@ -3,10 +3,9 @@ import {Observable} from 'rxjs/Observable';
 import {AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase';
 import GoogleAuthProvider = firebase.auth.GoogleAuthProvider;
-import 'rxjs/add/operator/map';
 import {User} from 'firebase';
 import UserCredential = firebase.auth.UserCredential;
-
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthService {
@@ -31,8 +30,13 @@ export class AuthService {
       .map(response => response as UserCredential);
   }
 
-  get token(): Observable<any> {
+  get token(): any{
     return Observable.fromPromise(firebase.auth().currentUser.getIdToken(true));
+  }
+
+  get localAccessToken(): string {
+    const key = localStorage.key(0);
+    return JSON.parse(localStorage.getItem(key)).stsTokenManager.accessToken;
   }
 
   signOut() {

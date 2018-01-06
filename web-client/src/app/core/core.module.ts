@@ -7,6 +7,8 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {ToggleSidebarService} from './toggle-sidebar/toggle-sidebar.service';
 import {CrudRestService} from './crud-rest/crud-rest.service';
 import {DatatableService} from '../home/shared/datatable/datatable.service';
+import {TokenInterceptorService} from './token-interceptor/token-interceptor.service';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -17,10 +19,16 @@ import {DatatableService} from '../home/shared/datatable/datatable.service';
   declarations: [],
   providers: [
     AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    },
     AuthGuardService,
     ToggleSidebarService,
     CrudRestService,
-    DatatableService
+    DatatableService,
+    TokenInterceptorService
   ]
 })
 export class CoreModule { }
